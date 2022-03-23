@@ -1,9 +1,10 @@
-const express = require("express");
-const registerApi = require("./register");
+const express = require('express');
+const registerApi = require('./register');
+const loginApi = require('./login');
+const todoApi = require('./todo');
 const router = express.Router();
 
-// router.get("/", (req, res) => {
-//   res.json({ message: "API -- hejhej" });
-// });
 router.use(registerApi);
+router.use(loginApi);
+router.use(todoApi);
 module.exports = router;
