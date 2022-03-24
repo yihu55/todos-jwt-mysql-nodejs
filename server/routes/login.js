@@ -16,7 +16,7 @@ router.post('/login', async (req, res) => {
       return res.json({ message: 'Welcome back', token: jwtToken });
     }
   } catch (err) {
-    res.json({ message: err });
+    return res.json({ message: err });
   }
   if (!user) {
     return res.json({ message: 'User and password does not match!' });
