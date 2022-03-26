@@ -16,7 +16,9 @@ router.post(
   passport.authenticate('jwt', { session: false }),
   async (req, res) => {
     const { content } = req.body;
-    const newTodo = new Todo({ content: content });
+    const newTodo = await Todo.create({ content: content });
+    //associate UserId and Todos foreignkey UserId
+    await newTodo.setUser(req.user.id);
     const savedTodo = await newTodo.save();
 
     if (savedTodo) {

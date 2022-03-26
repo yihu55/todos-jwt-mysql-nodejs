@@ -9,8 +9,8 @@ const Todo = sequelize.define('Todo', {
   },
 });
 
-// User.hasMany(Todo);
-Todo.belongsTo(User, { as: 'User', foreignKey: 'UserId' });
+User.hasMany(Todo);
+Todo.belongsTo(User); //, { as: 'User', foreignKey: 'UserId' });
 
 // Todo.associate = (models) => {
 //   Todo.belongsTo(models.User, {

@@ -1,6 +1,6 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../database');
-const Todo = require('../models/Todo');
+//const Todo = require('../models/Todo');
 
 const User = sequelize.define(
   'User',
@@ -19,7 +19,7 @@ const User = sequelize.define(
     timestamps: false,
   }
 );
-User.hasMany(Todo);
+//User.hasMany(Todo);
 
 // User.associate = (models) => {
 //   User.hasMany(models.Todo, {
