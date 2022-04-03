@@ -7,16 +7,13 @@ const Todo = sequelize.define('Todo', {
     type: DataTypes.STRING,
     allowNull: false,
   },
+  completed: {
+    type: DataTypes.BOOLEAN,
+    defaultValue: false,
+  },
 });
 
 User.hasMany(Todo);
-Todo.belongsTo(User); //, { as: 'User', foreignKey: 'UserId' });
+Todo.belongsTo(User);
 
-// Todo.associate = (models) => {
-//   Todo.belongsTo(models.User, {
-//     foreignKey: {
-//       allowNull: false,
-//     },
-//   });
-// };
 module.exports = Todo;
