@@ -1,13 +1,12 @@
 
-import React, { useEffect,useContext,useState } from 'react'
+import React, { useEffect,useContext} from 'react'
 import { Context } from '../App'
 import Todo from './Todo'
 
 
 export default function TodoList() {
-// const [todos,setTodos]=useState(null)
-//const [completed,setCompleted]=useState(false)
-const {todos,setTodos,getTodoList,getTodo}=useContext(Context)
+
+const {todos,getTodoList}=useContext(Context)
 
 
 useEffect(()=>{
@@ -15,7 +14,9 @@ useEffect(()=>{
 },[])
 
   return (
+
     <div>
+      
         <h1>TodoList</h1>
         {todos&&todos.map((todo)=>{
             return(

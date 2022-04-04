@@ -54,7 +54,35 @@ export const BaseFuncs={
             },
             body:JSON.stringify(payload)
         })
+    },
+    getCompletedTodos:()=>{
+        const url=`${ROOT_URL}/completed_todos`
+        const token=getToken()
+        return fetch(url,{
+            method:'GET',
+            headers:{
+                 'Content-Type':'application/json',
+                 'Authorization':`Bearer ${token}`
+            },
+            
+        })
+    },
+
+    editTodo:({id,payload})=>{
+        const url=`${ROOT_URL}/edit-todo/${id}`
+        const token=getToken()
+        return fetch(url,{
+            method:'PUT',
+            headers:{
+                 'Content-Type':'application/json',
+                 'Authorization':`Bearer ${token}`
+            },
+            body:JSON.stringify(payload)
+            
+        })
     }
+
+
 
 
     

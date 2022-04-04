@@ -61,4 +61,10 @@ router.get('/completed_todos', secure, async (req, res) => {
   });
   return res.json({ completedTodos: todos });
 });
+router.put('/edit-todo/:id', secure, async (req, res) => {
+  const todo = await Todo.findOne({ where: { id: req.params.id } });
+  const updatedTodo = await todo.update({ completed: !todo.completed });
+  console.log(updatedTodo);
+  return res.json({ updatedTodo });
+});
 module.exports = router;
