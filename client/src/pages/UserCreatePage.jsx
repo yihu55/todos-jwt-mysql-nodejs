@@ -1,5 +1,6 @@
 import React,{useState} from 'react'
 import {useNavigate}from 'react-router-dom'
+import { BaseFuncs } from '../data/BaseFuncs'
 
 export default function Login() {
     const [username,setUsername]=useState("")
@@ -7,25 +8,33 @@ export default function Login() {
     const [response,setResponse]=useState(null)
     const navigate=useNavigate()
 
+    // function handleOnSubmit(e){
+    //     e.preventDefault()
+    //     const url='http://localhost:5000/api/v1/register'
+    //     const payload={username,password}
+
+    //     fetch(url,{
+    //         method:'POST',
+    //         headers:{
+    //             'Content-Type':'application/json'
+    //         },
+    //         body:JSON.stringify(payload)
+
+    //     })
+    //     .then(res=>res.json())
+    //     .then(data=>{
+    //        setResponse(data)
+    //         navigate('/login')
+    //     })
+
+    // }
     function handleOnSubmit(e){
         e.preventDefault()
-        const url='http://localhost:5000/api/v1/register'
-        const payload={username,password}
-
-        fetch(url,{
-            method:'POST',
-            headers:{
-                'Content-Type':'application/json'
-            },
-            body:JSON.stringify(payload)
-
-        })
+        BaseFuncs.user.create({username,password})
         .then(res=>res.json())
         .then(data=>{
-           setResponse(data)
             navigate('/login')
         })
-
     }
   return (
     <div>

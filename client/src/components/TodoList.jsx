@@ -1,53 +1,31 @@
-import React, { useEffect,useState } from 'react'
+
+import React, { useEffect,useContext,useState } from 'react'
+import { Context } from '../App'
+import Todo from './Todo'
+
 
 export default function TodoList() {
-const [todos,setTodos]=useState(null)
-const [completed,setCompleted]=useState(false)
+// const [todos,setTodos]=useState(null)
+//const [completed,setCompleted]=useState(false)
+const {todos,setTodos,getTodoList,getTodo}=useContext(Context)
 
-function handleOnClick(e){
-    e.preventDefault()
-    setCompleted(true)
-
-}
 
 useEffect(()=>{
-    // fetchData(setTodos)
-    fetchData()
+    getTodoList()
 },[])
 
-function fetchData(){
-    const url='http://localhost:5000/api/v1/my_todos'
-        const token=localStorage.getItem('todo')
-        const headers={
-            'Content-Type':'application.json',
-            'Authorization':`Bearer ${token}`
-        }
-    
-    fetch(url,{
-        headers:headers,
-    })
-    .then(res=>res.json())
-    .then(data=>{
-        setTodos(data.todos)
-        console.log(data)
-    })
-}
   return (
     <div>
         <h1>TodoList</h1>
         {todos&&todos.map((todo)=>{
-            const {id,content,completed}=todo
             return(
-                <div key={id}>
-                    <p key={id}>
-                        {content} - {completed ? "completed" :"not completed"}
-                        </p>
-                        <form onClick={handleOnClick}>
-                        <input type="checkbox" onChange={e=>{setCompleted(e.target.value)}} />
-                        </form>
-                   
-
-                    </div>
+                <Todo 
+                  key={todo.id}
+                  todo={todo}
+                  content={todo.content}
+                  completed={todo.completed}
+                  id={todo.id}
+                />
             )
         })}
 

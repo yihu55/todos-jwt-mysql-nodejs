@@ -1,27 +1,16 @@
-import React,{useState} from 'react'
+import React,{useState,useContext} from 'react'
+import { BaseFuncs } from '../data/BaseFuncs'
+import {Context}from '../App'
 
 export default function CreateTodo() {
     const [content,setContent]=useState("")
+    const {getTodoList}=useContext(Context)
+
     function handleOnSubmit(e){
         e.preventDefault()
-        const url='http://localhost:5000/api/v1/todo'
-        const payload={content}
-        const token=localStorage.getItem('todo')
-        const headers={
-            'Content-Type':'application/json',
-            'Authorization':`Bearer ${token}`
-        
-        }
-        
-        fetch(url,{
-            method:'POST',
-            headers:headers,
-            body:JSON.stringify(payload)
-        })
+        BaseFuncs.createTodo({content})
         .then(res=>res.json())
-        
-        
-
+        .then(data=>getTodoList()) 
     }
 
   return (
