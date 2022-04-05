@@ -90,6 +90,17 @@ export const BaseFuncs={
             body:JSON.stringify(payload)
             
         })
+    },
+    filterTodos:({search})=>{
+        const url=`${ROOT_URL}/search?search=${search}`
+        const token=getToken()
+        return fetch(url,{
+            method:'GET',
+            headers:{
+                 'Content-Type':'application/json',
+                 'Authorization':`Bearer ${token}`
+            }, 
+        })
     }
 
 

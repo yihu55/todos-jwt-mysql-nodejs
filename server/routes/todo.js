@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const passport = require('passport');
+const sequelize = require('sequelize');
+const Op = sequelize.Op;
 
 const Todo = require('../models/Todo');
 const User = require('../models/User');
@@ -67,11 +69,19 @@ router.put('/edit-todo/:id', secure, async (req, res) => {
   console.log(updatedTodo);
   return res.json({ updatedTodo });
 });
-// router.post('/search',secure,async(req,res)=>{
-//   const {search}=req.query
-//   const todos=await Todo.findAll({where:{ content:{}
-//     content
-//   }})
-
-// })
+router.get('/search', secure, async (req, res) => {
+  try {
+    const { search } = req.query;
+    search.toLowerCase();
+    const filteredTodos = await Todo.findAll({
+      where: {
+        userId: req.user.id,
+        content: { [Op.like]: '%' + search + '%' },
+      },
+    });
+    res.json({ filteredTodos: filteredTodos });
+  } catch (err) {
+    res.json({ message: err });
+  }
+});
 module.exports = router;
