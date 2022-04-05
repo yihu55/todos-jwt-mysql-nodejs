@@ -67,4 +67,11 @@ router.put('/edit-todo/:id', secure, async (req, res) => {
   console.log(updatedTodo);
   return res.json({ updatedTodo });
 });
+// router.post('/search',secure,async(req,res)=>{
+//   const {search}=req.query
+//   const todos=await Todo.findAll({where:{ content:{}
+//     content
+//   }})
+
+// })
 module.exports = router;

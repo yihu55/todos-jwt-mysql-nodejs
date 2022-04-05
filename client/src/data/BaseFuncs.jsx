@@ -30,6 +30,16 @@ export const BaseFuncs={
                 body:JSON.stringify(payload)
             })
         },
+        getme:()=>{
+            const url=`${ROOT_URL}/me`
+            const token=getToken()
+            return fetch(url,{
+                headers:{
+                    'Content-Type':'application/json',
+                    'Authorization':`Bearer ${token}`
+               },
+            })
+        }
   
     },
     getTodoList:()=>{
