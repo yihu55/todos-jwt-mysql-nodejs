@@ -1,6 +1,7 @@
-import React,{useEffect, useState} from 'react'
+import React,{ useState} from 'react'
 import { BaseFuncs } from '../data/BaseFuncs'
-import {useSearchParams} from 'react-router-dom'
+import {Button} from 'react-bootstrap'
+import { StyledInput, StyledList, StyledUl } from '../styles/ListStyled'
 
 
 export default function FilterTodos({location}) {
@@ -8,16 +9,6 @@ export default function FilterTodos({location}) {
   
   const [filteredTodos,setFilteredTodos]=useState(null)
   const [search,setSearch]=useState("")
-  //const {search}=useLocation()
-  //const searchParams=new URLSearchParams(document.location.search)
-  
-//   const params=new URLSearchParams(location.search)
-//   const query=params.get('search')
-//   setSearch(query?query:'not found')
-//const [searchParams]=useSearchParams()
-    //const searchWord=searchParams.get('search')
-    //console.log("searchWord:",searchWord)
-
 
   const handleOnSubmit=(e)=>{
     e.preventDefault()
@@ -33,20 +24,21 @@ export default function FilterTodos({location}) {
   }
 
   return (
-    <div>FilterTodos
+    <div><h2>FilterTodos</h2>
         <form onSubmit={handleOnSubmit}>
-            <input type="text"
+            <StyledInput type="text"
             value={search}
             onChange={e=>{setSearch(e.target.value)}} 
             placeholder="search todos" />
-            <button type="submit">search</button>
+            <Button variant="danger" type="submit">search</Button>
         </form>
+        <StyledUl width="300px"><h3>filtered todos</h3>
     {filteredTodos&&filteredTodos.map(filteredTodo=>{
         return (
-            <p key={filteredTodo.id}>content:{filteredTodo.content}</p>
+            <StyledList key={filteredTodo.id}>{filteredTodo.content}</StyledList>
 
         )
-    })}
+    })}</StyledUl>
     </div>
   )
 }

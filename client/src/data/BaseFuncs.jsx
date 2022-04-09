@@ -8,12 +8,11 @@ export const BaseFuncs={
     user:{
         create:payload=>{
             const url=`${ROOT_URL}/register`
-            const token=getToken()
             return fetch(url,{
                 method:'POST',
                 headers:{
                      'Content-Type':'application/json',
-                    //'Authorization':`Bearer ${token}`
+                  
                 },
                 body:JSON.stringify(payload)
             })

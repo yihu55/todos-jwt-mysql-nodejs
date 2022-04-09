@@ -1,6 +1,8 @@
 import React,{useState,useContext} from 'react'
 import { BaseFuncs } from '../data/BaseFuncs'
 import {Context}from '../App'
+import {Button}from 'react-bootstrap'
+import { StyledInput } from '../styles/ListStyled'
 
 export default function CreateTodo() {
     const [content,setContent]=useState("")
@@ -15,13 +17,13 @@ export default function CreateTodo() {
 
   return (
     <div>
-        <h1>CreateTodo</h1>
+        <h2>CreateTodo</h2>
         <form onSubmit={handleOnSubmit}>
-            <input type="text" 
+            <StyledInput type="text" 
             value={content} 
             onChange={e=>{setContent(e.target.value)}}
             placeholder="todo Content"/>
-            <button type='submit'>add todo</button>
+            <Button variant="danger"type='submit'>add todo</Button>
         </form>
 
 

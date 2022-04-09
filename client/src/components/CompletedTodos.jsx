@@ -1,6 +1,9 @@
 import React,{useContext} from 'react'
 import { BaseFuncs } from '../data/BaseFuncs'
 import { Context } from '../App'
+import Button from 'react-bootstrap/Button'
+
+//same as import {Button} from 'react-bootstrap'
 
 
 export default function GetCompletedTodos() {
@@ -14,16 +17,16 @@ export default function GetCompletedTodos() {
         setTodos(data.completedTodos)
       })
   }
-  const getAllTodos=(e)=>{
-    e.preventDefault()
-    getTodoList()
-  }
+ 
+
   
 
   return (<>
-  <button onClick={getCompletedTodos}>completed todos</button>
-  <button onClick={getAllTodos}>get all todos</button>
-
+  {/* behöver åtgärda sort alfabeticlly och get all todos, vilket var konstig att även console.logade getTodoList()render iaf todos lista */}
+  <Button onClick={getCompletedTodos}>completed todos</Button>
+ 
+  
+     
   </>
     
   )

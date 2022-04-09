@@ -1,10 +1,11 @@
 import { Routes, Route } from 'react-router-dom';
 import React, { useState, createContext, useEffect } from 'react';
-import './App.css';
 import Home from './pages/Home';
 import UserCreatePage from './pages/UserCreatePage';
 import LoginPage from './pages/Login';
 import { BaseFuncs } from './data/BaseFuncs';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { StyledH1 } from './styles/ListStyled';
 
 const Context = createContext({});
 function App() {
@@ -23,13 +24,16 @@ function App() {
       .then((data) => setUsername(data.username));
   };
   useEffect(() => {
+    getTodoList();
     getMe();
   }, []);
 
   return (
     <div>
-      <Context.Provider value={{ todos, setTodos, getTodoList, username }}>
-        <h1>Todo App</h1>
+      <Context.Provider
+        value={{ todos, setTodos, getTodoList, username, getMe }}
+      >
+        <StyledH1>Todo App</StyledH1>
         <Routes>
           <Route path='/home' element={<Home />} />
           <Route path='/register' element={<UserCreatePage />} />

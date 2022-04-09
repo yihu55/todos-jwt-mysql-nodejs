@@ -1,5 +1,6 @@
 import React from 'react'
 import {useNavigate} from 'react-router-dom'
+import {Button} from 'react-bootstrap'
 
 export default function Logout() {
     const navigate=useNavigate()
@@ -8,6 +9,6 @@ export default function Logout() {
         navigate('/login')
     }
   return (
-    <button onClick={logout}>Logout</button>
+    <Button onClick={logout}>Logout</Button>
   )
 }

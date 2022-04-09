@@ -9,17 +9,7 @@ export default function Login() {
 
     function handleOnSubmit(e){
         e.preventDefault()
-        // const url='http://localhost:5000/api/v1/login'
-        // const payload={username,password}
 
-        // fetch(url,{
-        //     method:'POST',
-        //     headers:{
-        //         'Content-Type':'application/json'
-        //     },
-        //     body:JSON.stringify(payload)
-
-        // })
         BaseFuncs.user.login({username,password})
         .then(res=>res.json())
         .then(data=>{

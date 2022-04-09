@@ -1,23 +1,16 @@
-
-import React, { useEffect,useContext} from 'react'
+import React, { useContext} from 'react'
 import { Context } from '../App'
+import { StyledUl } from '../styles/ListStyled'
 import Todo from './Todo'
 
 
 export default function TodoList() {
 
-const {todos,getTodoList}=useContext(Context)
-
-
-useEffect(()=>{
-    getTodoList()
-},[])
+const {todos}=useContext(Context)
 
   return (
 
-    <div>
-      
-        <h1>TodoList</h1>
+    <StyledUl> 
         {todos&&todos.map((todo)=>{
             return(
                 <Todo 
@@ -25,11 +18,12 @@ useEffect(()=>{
                   todo={todo}
                   content={todo.content}
                   completed={todo.completed}
+                  createdAt={todo.createdAt}
                   id={todo.id}
                 />
             )
         })}
 
-     </div>
+     </StyledUl>
   )
 }

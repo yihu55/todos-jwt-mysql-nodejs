@@ -1,22 +1,33 @@
 import React from 'react'
 import CreateTodo from '../components/CreateTodo'
-import ToggleCompletedTodos from '../components/ToggleCompletedTodos'
+import CompletedTodos from '../components/CompletedTodos'
 import TodoList from '../components/TodoList'
-import Logout from '../components/Logout'
 import GetMe from '../components/GetMe'
 import FilterTodos from '../components/FilterTodos'
+import SortTodos from '../components/SortTodos'
+import GetAllTodos from '../components/GetAllTodos'
+
+import {Container,Row,Col} from 'react-bootstrap'
 
 export default function Home() {
   return (
-    <div>
+    <Container>
+      <Row>
+        <Col>
         <GetMe/>
-        <Logout/>
-        <FilterTodos/>
         <CreateTodo/>
-        <ToggleCompletedTodos />
+        <FilterTodos/>
+        </Col>
+
+        <Col>
+        <h1>TodoList</h1>
+        <CompletedTodos />
+        <GetAllTodos />
+        <SortTodos/>
         <TodoList />
+        </Col>
+      </Row>  
         
-        
-    </div>
+    </Container>
   )
 }
