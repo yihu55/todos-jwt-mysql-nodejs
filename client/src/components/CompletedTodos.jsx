@@ -7,7 +7,7 @@ import Button from 'react-bootstrap/Button'
 
 
 export default function GetCompletedTodos() {
-  const {todos,setTodos,getTodoList}=useContext(Context)
+  const {setTodos}=useContext(Context)
     
   const getCompletedTodos=(e)=>{
       e.preventDefault()
@@ -17,17 +17,8 @@ export default function GetCompletedTodos() {
         setTodos(data.completedTodos)
       })
   }
- 
 
-  
-
-  return (<>
-  {/* behöver åtgärda sort alfabeticlly och get all todos, vilket var konstig att även console.logade getTodoList()render iaf todos lista */}
+  return (
   <Button onClick={getCompletedTodos}>completed todos</Button>
- 
-  
-     
-  </>
-    
   )
 }

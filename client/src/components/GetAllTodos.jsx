@@ -13,7 +13,9 @@ export default function GetCompletedTodos() {
   const getAllTodos=(e)=>{
     e.preventDefault()
     console.log("hej")
+    console.log(todos)
    getTodoList()
+   console.log("todos after getTodoList()",todos)
   }
 
   

@@ -4,8 +4,7 @@ import {Button} from 'react-bootstrap'
 import { StyledInput, StyledList, StyledUl } from '../styles/ListStyled'
 
 
-export default function FilterTodos({location}) {
-    
+export default function FilterTodos() {    
   
   const [filteredTodos,setFilteredTodos]=useState(null)
   const [search,setSearch]=useState("")
@@ -24,7 +23,8 @@ export default function FilterTodos({location}) {
   }
 
   return (
-    <div><h2>FilterTodos</h2>
+    <div>
+      <h2>FilterTodos</h2>
         <form onSubmit={handleOnSubmit}>
             <StyledInput type="text"
             value={search}
@@ -32,13 +32,14 @@ export default function FilterTodos({location}) {
             placeholder="search todos" />
             <Button variant="danger" type="submit">search</Button>
         </form>
-        <StyledUl width="300px"><h3>filtered todos</h3>
-    {filteredTodos&&filteredTodos.map(filteredTodo=>{
-        return (
-            <StyledList key={filteredTodo.id}>{filteredTodo.content}</StyledList>
 
-        )
-    })}</StyledUl>
+        <StyledUl width="300px"><h3>filtered todos</h3>
+           {filteredTodos&&filteredTodos.map(filteredTodo=>{
+              return (
+            <StyledList key={filteredTodo.id}>{filteredTodo.content}</StyledList>
+             )
+             })}
+        </StyledUl>
     </div>
   )
 }

@@ -26,8 +26,6 @@ export default function CreateTodo() {
             <Button variant="danger"type='submit'>add todo</Button>
         </form>
 
-
-
     </div>
   )
 }
